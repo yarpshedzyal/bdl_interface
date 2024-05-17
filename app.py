@@ -13,8 +13,8 @@ def index():
 def send_message():
     message = request.form['message']
     messages.append(message)
-    response = generate_response()  # Generate server's response
-    messages.append(response)  # Append response to messages
+    response = generate_response()  
+    messages.append(response)  
     return jsonify({'status': 'Message sent'})
 
 @app.route('/messages')
