@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from libs.respond import generate_response
 
 app = Flask(__name__)
 
@@ -12,6 +13,8 @@ def index():
 def send_message():
     message = request.form['message']
     messages.append(message)
+    response = generate_response()  # Generate server's response
+    messages.append(response)  # Append response to messages
     return jsonify({'status': 'Message sent'})
 
 @app.route('/messages')
